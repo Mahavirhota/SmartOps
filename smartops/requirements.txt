@@ -1,0 +1,12 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+psycopg2-binary
+redis
+celery
+flower
+django-environ
+drf-yasg
+gunicorn
+sentry-sdk
+pytest-django
