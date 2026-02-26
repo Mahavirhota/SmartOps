@@ -7,13 +7,12 @@ Architecture Decision:
 - TTL-based expiration ensures stale data is auto-purged.
 - Decorator pattern for easy view-level caching.
 """
-import json
+import functools
 import hashlib
 import logging
-import functools
-from typing import Optional, Any
+from typing import Any, Optional
+
 from django.core.cache import cache
-from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -84,7 +83,7 @@ class CacheService:
 def cached_view(ttl: int = CACHE_TTL_MEDIUM, per_tenant: bool = True):
     """
     Decorator for caching DRF view responses.
-    
+
     Usage:
         @cached_view(ttl=300, per_tenant=True)
         def list(self, request):

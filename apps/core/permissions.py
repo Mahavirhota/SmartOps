@@ -13,7 +13,7 @@ from rest_framework.permissions import BasePermission
 class RoleBasedPermission(BasePermission):
     """
     Base RBAC permission class.
-    
+
     Subclass and set `required_role` to enforce minimum role level.
     Uses the role hierarchy from the User model.
     """

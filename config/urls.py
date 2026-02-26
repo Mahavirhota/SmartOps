@@ -1,10 +1,11 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from django.views.generic import RedirectView
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from drf_yasg.generators import OpenAPISchemaGenerator
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
 from apps.core.views.health import HealthCheckView
 
 
@@ -41,7 +42,7 @@ urlpatterns = [
 
     # Root redirect
     path('', RedirectView.as_view(url='/swagger/', permanent=False)),
-    
+
     # DRF API Auth (for Swagger 'Django Login' button)
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

@@ -14,6 +14,7 @@ Flow:
 """
 import threading
 from typing import Optional
+
 from django.http import HttpRequest, HttpResponse
 
 _thread_locals = threading.local()
@@ -38,7 +39,7 @@ class TenantMiddleware:
     """
     Middleware that extracts tenant from the authenticated user's JWT
     and stores it in thread-local storage for automatic queryset filtering.
-    
+
     Requires SimpleJWT authentication to run before this middleware.
     The tenant is determined by the user's active organization membership.
     """
@@ -65,7 +66,7 @@ class TenantMiddleware:
     def _resolve_tenant(self, request: HttpRequest) -> Optional[object]:
         """
         Resolve the tenant for the current request.
-        
+
         Priority:
         1. X-Tenant-ID header (for multi-org users switching context)
         2. User's default organization (tenant_id on user model)

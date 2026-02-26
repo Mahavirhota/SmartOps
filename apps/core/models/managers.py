@@ -6,8 +6,9 @@ Using a custom manager instead of view-level filtering ensures that
 tenant isolation is enforced at the ORM layer. Even if a developer
 forgets to filter in a view, the manager will prevent cross-tenant leaks.
 """
-from django.db import models
 from typing import Optional
+
+from django.db import models
 
 
 class TenantQuerySet(models.QuerySet):
@@ -28,7 +29,7 @@ class TenantQuerySet(models.QuerySet):
 class TenantManager(models.Manager):
     """
     Manager that auto-scopes queries to the current tenant.
-    
+
     Usage in models:
         objects = TenantManager()  # All queries auto-filtered by tenant
         unscoped = models.Manager()  # Escape hatch for admin/system queries

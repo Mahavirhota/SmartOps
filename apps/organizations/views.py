@@ -2,22 +2,20 @@
 Organization views — thin controllers with tenant-aware querysets.
 Uses select_related/prefetch_related to prevent N+1 queries.
 """
-from rest_framework import viewsets, permissions, status
+from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Organization, Membership
-from .serializers import (
-    OrganizationSerializer,
-    MembershipSerializer,
-    InviteMemberSerializer,
-)
+
+from .models import Membership, Organization
+from .serializers import (InviteMemberSerializer, MembershipSerializer,
+                          OrganizationSerializer)
 from .services import OrganizationService
 
 
 class OrganizationViewSet(viewsets.ModelViewSet):
     """
     CRUD for organizations.
-    
+
     Lists only organizations the authenticated user belongs to.
     N+1 prevention: uses select_related for owner FK.
     """

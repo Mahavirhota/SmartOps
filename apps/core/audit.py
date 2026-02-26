@@ -7,10 +7,11 @@ They are essential for compliance (SOC2, GDPR) and security forensics.
 The model stores structured data including IP address, user agent,
 and a JSON diff of changes.
 """
-import uuid
 import logging
-from django.db import models
+import uuid
+
 from django.conf import settings
+from django.db import models
 from django.utils import timezone
 
 logger = logging.getLogger(__name__)
@@ -19,7 +20,7 @@ logger = logging.getLogger(__name__)
 class AuditLog(models.Model):
     """
     Immutable audit log entry for security-critical actions.
-    
+
     Tracks: logins, data changes, role changes, permission changes.
     Never delete audit logs — they are your compliance evidence.
     """
@@ -85,7 +86,7 @@ def audit_action(
 ) -> AuditLog:
     """
     Helper to create an audit log entry.
-    
+
     Usage:
         audit_action(
             user=request.user,

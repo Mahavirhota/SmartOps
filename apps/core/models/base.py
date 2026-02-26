@@ -8,8 +8,8 @@ Architecture Decision:
   NEVER leak data across tenants — a critical SaaS security requirement.
 """
 import uuid
+
 from django.db import models
-from django.conf import settings
 
 
 class TimeStampedModel(models.Model):
@@ -31,7 +31,7 @@ class TimeStampedModel(models.Model):
 class TenantAwareModel(TimeStampedModel):
     """
     Abstract model enforcing multi-tenant isolation.
-    
+
     Every model that stores tenant-specific data MUST inherit from this.
     The custom TenantManager auto-filters queries by the current tenant,
     preventing cross-tenant data access at the ORM level.

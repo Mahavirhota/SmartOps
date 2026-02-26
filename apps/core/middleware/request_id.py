@@ -7,8 +7,9 @@ UUID that propagates through logs, Sentry events, and response headers.
 This enables correlating all log entries for a single user action across
 services, workers, and databases.
 """
-import uuid
 import threading
+import uuid
+
 from django.http import HttpRequest, HttpResponse
 
 _thread_locals = threading.local()
@@ -22,7 +23,7 @@ def get_request_id() -> str:
 class RequestIDMiddleware:
     """
     Assigns a unique request ID to every incoming request.
-    
+
     - Checks for existing X-Request-ID header (from load balancers/API gateways)
     - Generates a new UUID4 if none present
     - Stores in thread-local for logging injection

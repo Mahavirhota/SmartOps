@@ -8,12 +8,13 @@ Architecture Decision:
   replay, ensuring no event is silently lost.
 """
 import logging
+
 from celery import shared_task
-from django.utils import timezone
 
 logger = logging.getLogger(__name__)
 
 # ── Event Processing ──────────────────────────────────────────────
+
 
 @shared_task(
     bind=True,
@@ -24,11 +25,11 @@ logger = logging.getLogger(__name__)
 def process_domain_event(self, event_data: dict) -> None:
     """
     Process a domain event by routing it to registered handlers.
-    
+
     Retry Strategy:
     - Exponential backoff: 10s, 20s, 40s, 80s, 160s
     - After max_retries, routes to dead letter handler
-    
+
     This ensures transient failures (network, DB) are retried,
     while permanent failures are captured for investigation.
     """
@@ -82,7 +83,7 @@ def process_domain_event(self, event_data: dict) -> None:
 def store_dead_letter(event_data: dict, error_message: str) -> None:
     """
     Store permanently failed events for manual investigation.
-    
+
     Dead letters are stored in the database with the original event data
     and the error that caused the failure. Operations teams can review
     and replay these events after fixing the underlying issue.

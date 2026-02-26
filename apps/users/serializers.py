@@ -2,8 +2,9 @@
 User serializers with service-layer integration.
 Views remain thin — serializers delegate to services for business logic.
 """
-from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
 from apps.users.services import UserService
 
 User = get_user_model()

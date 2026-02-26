@@ -10,8 +10,9 @@ All models inherit TenantAwareModel for automatic multi-tenant isolation.
 JSONField is used for flexible step config and execution output, allowing
 different workflow types without schema changes.
 """
-from django.db import models
 from django.conf import settings
+from django.db import models
+
 from apps.core.models.base import TenantAwareModel
 
 

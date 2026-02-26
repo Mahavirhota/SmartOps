@@ -1,10 +1,12 @@
 """
 Organization Service Layer — Business logic for tenant management.
 """
-from typing import Optional, List
-from django.db import transaction
+from typing import List, Optional
+
 from django.contrib.auth import get_user_model
-from apps.organizations.models import Organization, Membership
+from django.db import transaction
+
+from apps.organizations.models import Membership, Organization
 
 User = get_user_model()
 
@@ -17,7 +19,7 @@ class OrganizationService:
     def create_organization(name: str, owner: 'User') -> Organization:
         """
         Create a new organization and set the creator as OWNER.
-        
+
         This establishes a new tenant boundary. All resources created
         within this organization are automatically scoped to it.
         """

@@ -9,8 +9,9 @@ Architecture Decision:
 - Membership model for M2M with role tracking per-org.
 """
 import uuid
-from django.db import models
+
 from django.conf import settings
+from django.db import models
 from django.utils.text import slugify
 
 

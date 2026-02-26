@@ -1,6 +1,7 @@
 """Workflow serializers."""
 from rest_framework import serializers
-from .models import Workflow, WorkflowStep, WorkflowExecution
+
+from .models import Workflow, WorkflowExecution, WorkflowStep
 
 
 class WorkflowStepSerializer(serializers.ModelSerializer):

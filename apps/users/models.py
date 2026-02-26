@@ -8,15 +8,15 @@ Architecture Decision:
 - UUID primary key for distributed-system compatibility.
 """
 import uuid
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.conf import settings
 
 
 class User(AbstractUser):
     """
     Custom user model with multi-tenant and RBAC support.
-    
+
     The tenant field represents the user's currently active organization.
     Users can belong to multiple organizations but operate within one
     tenant context at a time (switched via X-Tenant-ID header).

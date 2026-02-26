@@ -1,9 +1,9 @@
 """
 Workflow Service — Business logic for workflow execution.
 """
-from typing import Optional
-from django.utils import timezone
 from django.db import transaction
+from django.utils import timezone
+
 from .models import Workflow, WorkflowExecution
 
 

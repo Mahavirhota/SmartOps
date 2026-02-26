@@ -5,13 +5,12 @@ This module is imported by CoreConfig.ready() to ensure all handlers
 are registered when Django boots up.
 """
 import logging
+
+from apps.core.events.handlers import (handle_invoice_paid,
+                                       handle_role_changed,
+                                       handle_user_created,
+                                       handle_workflow_completed)
 from apps.core.events.registry import EventRegistry
-from apps.core.events.handlers import (
-    handle_user_created,
-    handle_invoice_paid,
-    handle_workflow_completed,
-    handle_role_changed,
-)
 
 logger = logging.getLogger(__name__)
 

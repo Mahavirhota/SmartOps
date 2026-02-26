@@ -14,11 +14,11 @@ logger = logging.getLogger(__name__)
 class EventRegistry:
     """
     Registry mapping event types to handler functions.
-    
+
     Usage:
         EventRegistry.register('user_created', send_welcome_email)
         EventRegistry.register('user_created', provision_default_workspace)
-        
+
     Multiple handlers can be registered for the same event type.
     """
     _handlers: Dict[str, List[Callable]] = {}

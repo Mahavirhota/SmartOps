@@ -1,12 +1,13 @@
 """Dead Letter Event model for storing permanently failed events."""
-from django.db import models
 import uuid
+
+from django.db import models
 
 
 class DeadLetterEvent(models.Model):
     """
     Stores events that failed after all retries.
-    
+
     Operations teams can review dead letters, fix the issue,
     and replay them using the stored payload.
     """

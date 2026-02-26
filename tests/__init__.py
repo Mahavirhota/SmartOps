@@ -3,9 +3,10 @@ Shared test fixtures for SmartOps test suite.
 Provides pre-configured API client, users, organizations, and tenants.
 """
 import pytest
-from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
-from apps.organizations.models import Organization, Membership
+from rest_framework.test import APIClient
+
+from apps.organizations.models import Membership, Organization
 
 User = get_user_model()
 

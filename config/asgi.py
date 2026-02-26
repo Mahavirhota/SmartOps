@@ -7,9 +7,10 @@ traditional HTTP. The ProtocolTypeRouter dispatches based on protocol:
 - WebSocket → Channels consumers (with auth middleware)
 """
 import os
+
 import django
-from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')

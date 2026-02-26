@@ -3,7 +3,7 @@ Billing models — Invoice and subscription tracking.
 All models are tenant-aware for multi-tenant isolation.
 """
 from django.db import models
-from django.conf import settings
+
 from apps.core.models.base import TenantAwareModel
 
 

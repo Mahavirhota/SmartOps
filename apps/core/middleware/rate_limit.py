@@ -8,10 +8,11 @@ fixed windows (no burst at window boundaries).
 
 Configurable per-endpoint or global limits via settings.
 """
-import time
 import logging
-from django.http import JsonResponse
+import time
+
 from django.conf import settings
+from django.http import JsonResponse
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ DEFAULT_WINDOW = getattr(settings, 'RATE_LIMIT_WINDOW', 60)  # seconds
 class RateLimitMiddleware:
     """
     Sliding window rate limiter using Redis sorted sets.
-    
+
     Each request is timestamped and added to a sorted set keyed by
     the client's IP. Expired entries are pruned on each check.
     """

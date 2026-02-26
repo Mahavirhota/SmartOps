@@ -22,7 +22,7 @@ def handle_user_created(event_data: dict) -> None:
             user_id=user_id,
             notification_type='welcome',
             title='Welcome to SmartOps!',
-            message=f'Your account has been created successfully.',
+            message='Your account has been created successfully.',
         )
     except Exception as e:
         logger.error(f"Failed to create welcome notification: {e}")

@@ -7,9 +7,11 @@ This makes logic testable independently of HTTP, reusable across
 management commands, Celery tasks, and other entry points.
 """
 from typing import Optional
+
 from django.contrib.auth import get_user_model
 from django.db import transaction
-from apps.organizations.models import Organization, Membership
+
+from apps.organizations.models import Membership
 
 User = get_user_model()
 
@@ -27,7 +29,7 @@ class UserService:
     ) -> User:
         """
         Register a new user and optionally create their organization.
-        
+
         When an organization_name is provided, the user becomes the OWNER
         of a new tenant, establishing the multi-tenant foundation.
         """

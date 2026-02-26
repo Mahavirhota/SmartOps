@@ -3,7 +3,9 @@ Notification Service — Creates notifications and dispatches via WebSocket.
 """
 import logging
 from typing import Optional
+
 from django.contrib.auth import get_user_model
+
 from .models import Notification
 
 logger = logging.getLogger(__name__)
@@ -24,7 +26,7 @@ class NotificationService:
     ) -> Notification:
         """
         Create a notification and attempt real-time WebSocket delivery.
-        
+
         Falls back gracefully if Channels is not running.
         """
         notification = Notification(
@@ -59,8 +61,8 @@ class NotificationService:
     def _send_websocket(notification: Notification) -> None:
         """Send notification via WebSocket using Django Channels."""
         try:
-            from channels.layers import get_channel_layer
             from asgiref.sync import async_to_sync
+            from channels.layers import get_channel_layer
 
             channel_layer = get_channel_layer()
             if not channel_layer:

@@ -9,10 +9,11 @@ a structured response. A single unhealthy dependency makes the
 entire service "unhealthy".
 """
 import logging
-from django.http import JsonResponse
-from django.db import connection
-from django.views import View
+
 from django.conf import settings
+from django.db import connection
+from django.http import JsonResponse
+from django.views import View
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +21,11 @@ logger = logging.getLogger(__name__)
 class HealthCheckView(View):
     """
     Comprehensive health endpoint checking all critical dependencies.
-    
+
     Returns:
         200: All systems healthy
         503: One or more systems unhealthy
-        
+
     Response format:
     {
         "status": "healthy" | "unhealthy",

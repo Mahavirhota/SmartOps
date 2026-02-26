@@ -8,8 +8,8 @@ WHO cares about that event. It just emits it. Handlers are registered
 separately, enabling loose coupling and easy extensibility.
 """
 import uuid
-from datetime import datetime, timezone
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Any, Dict
 
 
@@ -17,7 +17,7 @@ from typing import Any, Dict
 class DomainEvent:
     """
     Base class for all domain events in SmartOps.
-    
+
     Every event is immutable, timestamped, and uniquely identified.
     The payload is a flexible dict for event-specific data.
     """

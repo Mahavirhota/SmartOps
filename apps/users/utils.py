@@ -1,9 +1,10 @@
 import secrets
 import string
 
+
 def generate_random_password(length=12):
     """
-    Generate a secure random password with at least one lowercase, 
+    Generate a secure random password with at least one lowercase,
     one uppercase, one digit, and one special character.
     """
     if length < 8:

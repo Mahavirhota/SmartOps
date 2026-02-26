@@ -7,8 +7,8 @@ connects to a personal notification group. When a background task
 completes or an event fires, notifications are pushed in real-time
 without polling.
 """
-import json
 import logging
+
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
 logger = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 class NotificationConsumer(AsyncJsonWebsocketConsumer):
     """
     WebSocket consumer for real-time notification delivery.
-    
+
     Clients connect to ws://host/ws/notifications/ with JWT auth.
     The consumer joins the user's personal notification group and
     the tenant-wide broadcast group.

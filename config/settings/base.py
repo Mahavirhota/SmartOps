@@ -3,8 +3,9 @@ Base Settings — Shared configuration across all environments.
 Environment-specific settings OVERRIDE values in this file.
 """
 import os
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -257,8 +258,8 @@ LOGGING = {
 SENTRY_DSN = env('SENTRY_DSN', default=None)
 if SENTRY_DSN:
     import sentry_sdk
-    from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.integrations.celery import CeleryIntegration
+    from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.integrations.redis import RedisIntegration
 
     sentry_sdk.init(

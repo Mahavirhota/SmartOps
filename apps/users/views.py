@@ -6,14 +6,11 @@ Views only handle HTTP concerns (request parsing, response formatting).
 All business logic is in UserService, making it testable and reusable.
 """
 from rest_framework import generics, status, views
-from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import (
-    UserSerializer,
-    UserProfileSerializer,
-    PasswordSuggestionSerializer,
-    SwitchTenantSerializer,
-)
+from rest_framework.response import Response
+
+from .serializers import (PasswordSuggestionSerializer, SwitchTenantSerializer,
+                          UserProfileSerializer, UserSerializer)
 from .services import UserService
 from .utils import generate_random_password
 

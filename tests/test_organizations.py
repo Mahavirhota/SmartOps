@@ -2,10 +2,11 @@
 Organization API Tests — CRUD, membership, and tenant isolation tests.
 """
 import pytest
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
-from django.contrib.auth import get_user_model
-from apps.organizations.models import Organization, Membership
+
+from apps.organizations.models import Membership, Organization
 
 User = get_user_model()
 
@@ -84,7 +85,7 @@ class TestOrganizationMembers:
     def test_invite_member(self, tenant_client, organization):
         """Test inviting a new member."""
         # Create a user to invite
-        invitee = User.objects.create_user(
+        User.objects.create_user(
             username='invitee',
             email='invitee@example.com',
             password='InviteeP@ss123!',

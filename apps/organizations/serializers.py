@@ -1,9 +1,10 @@
 """
 Organization serializers with membership management.
 """
-from rest_framework import serializers
-from .models import Organization, Membership
 from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
+from .models import Membership, Organization
 
 User = get_user_model()
 
