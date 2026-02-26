@@ -1,0 +1,42 @@
+# ── Core Framework ────────────────────────────────
+Django>=4.2,<5.0
+djangorestframework>=3.14
+djangorestframework-simplejwt>=5.3
+django-environ>=0.11
+
+# ── Database ──────────────────────────────────────
+psycopg2-binary>=2.9
+
+# ── Cache & Message Broker ────────────────────────
+redis>=5.0
+celery>=5.3
+django-celery-beat>=2.5
+
+# ── Real-Time (WebSocket) ────────────────────────
+channels>=4.0
+channels-redis>=4.1
+
+# ── API Documentation ────────────────────────────
+drf-yasg>=1.21
+
+# ── Monitoring & Observability ───────────────────
+sentry-sdk>=1.40
+django-prometheus>=2.3
+python-json-logger>=2.0
+
+# ── Security & CORS ──────────────────────────────
+django-cors-headers>=4.3
+
+# ── Production Server ────────────────────────────
+gunicorn>=21.2
+
+# ── Testing & Quality ────────────────────────────
+pytest>=7.4
+pytest-django>=4.7
+pytest-cov>=4.1
+flake8>=6.1
+isort>=5.12
+black>=23.0
+
+# ── Task Monitoring ──────────────────────────────
+flower>=2.0
